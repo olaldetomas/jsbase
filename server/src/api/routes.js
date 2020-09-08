@@ -14,6 +14,7 @@ class Routes {
 
   constructor(app) {
     this.app = app
+    this.createRoutes()
   }
 
   async createRoutes() {

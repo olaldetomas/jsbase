@@ -1,3 +1,3 @@
 module.exports = {
-  Authenticate: require('./Authenticate')
+  Authenticate: require('./Authenticate'),
 }

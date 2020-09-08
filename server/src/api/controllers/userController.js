@@ -1,8 +1,5 @@
 import { UserRepository } from '../../data/repositories'
-import { Controller } from '@decorators/express'
-// import { UserModel } from '../models/user'
-// import createError from 'http-errors'
-
+import { Controller, Post } from '@decorators/express'
 
 @Controller('/user')
 class UserController {
@@ -11,9 +8,12 @@ class UserController {
     this._repository = new UserRepository()
   }
 
-  // @Post('/')
-  // async create(req, res, next) {
-  // }
+  @Post('/')
+  async create(req, res) {
+    const user = req.body
+    const createdUser = await this._repository.create(user)
+    return res.send(createdUser)
+  }
 
   // @Put('/')
   // async update(req, res, next) {

@@ -13,5 +13,5 @@ class UserModel {
 }
 
 module.exports = {
-  UserModel: UserModel
+  UserModel: UserModel,
 }
