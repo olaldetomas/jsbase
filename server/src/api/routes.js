@@ -8,7 +8,6 @@ import createError from 'http-errors'
 import asyncHandler from 'express-async-handler'
 import {
   UserController,
-  AuthController,
 } from './controllers'
 
 class Routes {
@@ -26,12 +25,10 @@ class Routes {
 
     attachControllers(apiRouter, [
       UserController,
-      EnumController,
-      AuthController,
     ])
 
     apiRouter.use((req, res, next) => {
-      next(createError(404, 'Ruta no encontrada :('))
+      next(createError(404, 'Ruta no encontrada'))
     })
 
     apiRouter.use((error, req, res, next) => {
@@ -42,7 +39,6 @@ class Routes {
       res.json({
         status: error.status,
         message: error.message,
-        stack: error.stack
       })
     })
 

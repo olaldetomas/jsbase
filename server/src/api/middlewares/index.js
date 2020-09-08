@@ -1,3 +1,3 @@
 module.exports = {
-  Uploader: require('./uploader')
+  Authenticate: require('./Authenticate')
 }

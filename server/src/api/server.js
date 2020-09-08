@@ -4,7 +4,6 @@
 import express from 'express'
 import Routes from './routes'
 import config from '../config/config'
-import db from '../config/typeOrmConnection'
 import path from 'path'
 import 'regenerator-runtime'
 
@@ -16,7 +15,6 @@ class Server {
 
   async start() {
     this.express.use(express.urlencoded({ extended: true }))
-    await db
     const routes = new Routes(this.express)
     await routes.createRoutes()
     // Despliegue a producción
