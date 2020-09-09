@@ -1,5 +1,5 @@
 import { UserRepository } from '../../data/repositories'
-import { Controller, Post } from '@decorators/express'
+import { Controller, Post, Get } from '@decorators/express'
 
 @Controller('/user')
 class UserController {
@@ -10,9 +10,8 @@ class UserController {
 
   @Post('/')
   async create(req, res) {
-    const user = req.body
-    const createdUser = await this._repository.create(user)
-    return res.send(createdUser)
+    const user = await this._repository.create(req.body)
+    return res.send(user)
   }
 
   // @Put('/')
@@ -24,8 +23,16 @@ class UserController {
   // }
 
   // @Get('/:id(\[0-9]+)')
-  // async getById(req, res, next) {
+  // async getById(req, res) {
+
   // }
+
+  @Get('/:id')
+  async getAll(req, res) {
+    const id = req.params.id
+    const user = await this._repository.getById(id)
+    return res.send(user)
+  }
 
 }
 

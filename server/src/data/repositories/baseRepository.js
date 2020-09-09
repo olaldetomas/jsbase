@@ -5,8 +5,13 @@ class BaseRepository {
   }
 
   async create(data) {
-    let document = new this._entity(data)
-    return await document.save()
+    let Model = new this._entity(data)
+    return await Model.save()
+  }
+
+  async getById(id) {
+    const document = await this._entity.findById(id)
+    return document
   }
 
 }
