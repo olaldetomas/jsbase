@@ -7,8 +7,9 @@ class BaseRepository {
   }
 
   async create(data) {
-    let Model = new this.BaseModel(data)
-    return await Model.save()
+    const Model = new this.BaseModel(data)
+    const createdModel = await Model.save()
+    return createdModel
   }
 
   async getById(id) {
@@ -21,11 +22,11 @@ class BaseRepository {
   }
 
   async delete(id) {
-    await this.BaseModel.findOneAndRemove({ _id: id})
+    await this.BaseModel.findOneAndRemove({ _id: id })
     const document = await this.BaseModel.findById(id)
     if (!document) {
       return true
-    }    
+    }
     return false
   }
 

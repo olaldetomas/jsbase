@@ -14,11 +14,9 @@ class Routes {
 
   constructor(app) {
     this.app = app
-    this.configRoutes()
   }
 
-  async configRoutes() {
-    // Middlewares
+  async createRoutes() {
     const apiRouter = express.Router()
     apiRouter.use(cors())
     apiRouter.use(bodyParser.json())
@@ -26,11 +24,11 @@ class Routes {
     apiRouter.use(morgan('dev'))
 
     attachControllers(apiRouter, [
-      UserController,
+      UserController
     ])
 
     apiRouter.use((req, res, next) => {
-      next(createError(404, 'Ruta no encontrada'))
+      next(createError(404, 'Ruta no encontrada.'))
     })
 
     apiRouter.use((error, req, res, next) => {
@@ -44,7 +42,7 @@ class Routes {
       })
     })
 
-    apiRouter.use('/api', asyncHandler(apiRouter))
+    this.app.use('/api', asyncHandler(apiRouter))
   }
 
 }

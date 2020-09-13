@@ -6,6 +6,12 @@ class UserRepository extends BaseRepository {
 
   constructor() {
     super(User)
+    this.model = User
+  }
+
+  async getUserByEmail(email) {
+    const user = await this.model.findOne({ email: email })
+    return user
   }
 
 }
