@@ -11,24 +11,23 @@ import path from 'path'
 class Server {
 
   constructor() {
-    this.express = express()
+    this.app = express()
   }
 
   async start() {
-    this.express.use(express.urlencoded({ extended: true }))
-    const routes = new Routes(this.express)
-    await routes.createRoutes()
+    this.app.use(express.urlencoded({ extended: true }))
+    const routes = new Routes(this.app)
 
     if (process.env.NODE_ENV === 'production') {
-      this.express.use(
+      this.app.use(
         express.static(path.resolve(__dirname, '../public/dist'))
       )
-      this.express.get(/.*/, (req, res) =>
+      this.app.get(/.*/, (req, res) =>
         res.sendFile(path.resolve(__dirname, '../public/dist/index.html'))
       )
     }
 
-    this.express.listen(config.PORT, () => {
+    this.app.listen(config.PORT, () => {
       console.log('Server on port: ' + config.PORT)
     })
   }

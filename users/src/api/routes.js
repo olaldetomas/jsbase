@@ -14,10 +14,11 @@ class Routes {
 
   constructor(app) {
     this.app = app
-    this.createRoutes()
+    this.configRoutes()
   }
 
-  async createRoutes() {
+  async configRoutes() {
+    // Middlewares
     const apiRouter = express.Router()
     apiRouter.use(cors())
     apiRouter.use(bodyParser.json())
@@ -43,7 +44,7 @@ class Routes {
       })
     })
 
-    this.app.use('/api', asyncHandler(apiRouter))
+    apiRouter.use('/api', asyncHandler(apiRouter))
   }
 
 }

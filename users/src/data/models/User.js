@@ -4,14 +4,7 @@ import mongoose from 'mongoose'
 const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  passwordResetToken: String,
-  passwordResetExpires: String,
-  facebook: String,
-  twitter: String,
-  google: String,
-  tokens: Array,
 }, { timestamps: true })
-
 
 UserSchema.pre('save', function(next) {
   var user = this
@@ -26,7 +19,6 @@ UserSchema.pre('save', function(next) {
     })
   })
 })
-
 
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {

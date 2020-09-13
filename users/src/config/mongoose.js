@@ -13,7 +13,7 @@ mongoose.connection.on('connected', () => {
 })
 
 mongoose.connection.on('error', function(err) {
-  console.log('Database \x1b[33merror\x1b[0m', err)
+  console.log('Database \x1b[31merror\x1b[0m', err)
 })
 
 process.on('SIGINT', function() {
