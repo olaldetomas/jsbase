@@ -57,6 +57,7 @@ class UserController {
     user.refreshToken = refreshToken
     redis.set(refreshToken, JSON.stringify({ ...data, expiration }), redis.print)
   }
+
 }
 
 module.exports = UserController
