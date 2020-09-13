@@ -3,15 +3,14 @@ import config from '../config/config'
 
 async function createToken(user) {
   const payload = {
-          email: user.email,
-          rol: user.rol,
-          centerId: user.centerId
-        },
+    userId: user.id,
+    email: user.email,
+  }
 
-        token = jwt.sign({
-          exp: Math.floor(Date.now() / 1000) + config.JWT_EXPIRATION * 3600,
-          data: payload
-        }, config.JWT_SECRET)
+  const token = jwt.sign({
+    exp: Math.floor(Date.now() / 1000) + config.JWT_EXPIRATION * 3600,
+    data: payload
+  }, config.JWT_SECRET)
 
   return token
 };
