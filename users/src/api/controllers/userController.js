@@ -6,6 +6,7 @@ import randToken from 'rand-token'
 import redis from '../../config/redis'
 import createError from 'http-errors'
 import bcrypt from 'bcrypt'
+import Authenticate from '../middlewares/Authenticate'
 
 
 @Controller('/user')
@@ -26,20 +27,26 @@ class UserController {
     return res.send(userModel)
   }
 
-  @Delete('/:id')
+  @Delete('/:id', [ 
+    new Authenticate()
+  ])
   async delete(req, res) {
     const id = req.params.id
     const result = await this.repository.delete(id)
     return res.send(result)
   }
 
-  @Get('/')
+  @Get('/', [ 
+    new Authenticate()
+  ])
   async getAll(req, res) {
     const models = await this.repository.getAll()
     return res.send(models)
   }
 
-  @Get('/:id')
+  @Get('/:id', [ 
+    new Authenticate()
+  ])
   async getById(req, res) {
     const id = req.params.id
     const user = await this.repository.getById(id)
@@ -96,7 +103,7 @@ class UserController {
       return next(createError(403, 'No fue posible obtener el refresh token'))
     }
   }
-
+  
   async createTokenToUser(user) {
     const data = { id: user.id, email: user.email }
     const token = await createToken(user)
