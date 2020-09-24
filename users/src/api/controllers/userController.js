@@ -27,7 +27,7 @@ class UserController {
     return res.send(userModel)
   }
 
-  @Delete('/:id', [ 
+  @Delete('/:id', [
     new Authenticate()
   ])
   async delete(req, res) {
@@ -36,7 +36,7 @@ class UserController {
     return res.send(result)
   }
 
-  @Get('/', [ 
+  @Get('/', [
     new Authenticate()
   ])
   async getAll(req, res) {
@@ -44,7 +44,7 @@ class UserController {
     return res.send(models)
   }
 
-  @Get('/:id', [ 
+  @Get('/:id', [
     new Authenticate()
   ])
   async getById(req, res) {
@@ -103,7 +103,7 @@ class UserController {
       return next(createError(403, 'No fue posible obtener el refresh token'))
     }
   }
-  
+
   async createTokenToUser(user) {
     const data = { id: user.id, email: user.email }
     const token = await createToken(user)
