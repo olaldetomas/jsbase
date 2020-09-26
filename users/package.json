@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "express-decorators": "^1.2.1",
+    "googleapis": "^59.0.0",
     "http-errors": "^1.8.0",
     "http-status": "^1.4.2",
     "jsonwebtoken": "^8.5.1",

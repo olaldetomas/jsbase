@@ -8,6 +8,7 @@ import createError from 'http-errors'
 import asyncHandler from 'express-async-handler'
 import {
   UserController,
+  AuthController,
 } from './controllers'
 
 class Routes {
@@ -24,7 +25,8 @@ class Routes {
     apiRouter.use(morgan('dev'))
 
     attachControllers(apiRouter, [
-      UserController
+      UserController,
+      AuthController
     ])
 
     apiRouter.use((req, res, next) => {
