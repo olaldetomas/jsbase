@@ -26,7 +26,7 @@ class UserController {
     return res.send(userModel)
   }
 
-  @Delete('/:id', [ 
+  @Delete('/:id', [
     new Authenticate()
   ])
   async delete(req, res) {
@@ -35,7 +35,7 @@ class UserController {
     return res.send(result)
   }
 
-  @Get('/', [ 
+  @Get('/', [
     new Authenticate()
   ])
   async getAll(req, res) {
@@ -43,7 +43,7 @@ class UserController {
     return res.send(models)
   }
 
-  @Get('/:id', [ 
+  @Get('/:id', [
     new Authenticate()
   ])
   async getById(req, res) {
