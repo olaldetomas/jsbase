@@ -20,7 +20,7 @@ module.exports = {
     'no-control-regex': 0,
     // "no-unused-vars": "warn",
     'no-console': 'off',
-    'padded-blocks': ['warn', { classes: 'always' }],
+    // 'padded-blocks': ['warn', { classes: 'always' }],
     semi: ['error', 'never'],
     quotes: ['error', 'single'],
     'space-before-function-paren': ['error', 'never'],

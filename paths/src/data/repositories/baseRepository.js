@@ -19,6 +19,11 @@ class BaseRepository {
     return this.BaseModel.find()
   }
 
+  async update(id, data) {
+    const oldModel = await this.BaseModel.findByIdAndUpdate(id, data)
+    return oldModel
+  }
+
   async delete(id) {
     await this.BaseModel.findOneAndRemove({ _id: id })
     const model = await this.BaseModel.findById(id)

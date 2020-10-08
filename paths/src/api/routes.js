@@ -7,7 +7,8 @@ import morgan from 'morgan'
 import createError from 'http-errors'
 import asyncHandler from 'express-async-handler'
 import {
-  NoteController,
+  PathController,
+  MarkerController
 } from './controllers'
 
 class Routes {
@@ -24,7 +25,8 @@ class Routes {
     apiRouter.use(morgan('dev'))
 
     attachControllers(apiRouter, [
-      NoteController
+      PathController,
+      MarkerController
     ])
 
     apiRouter.use((req, res, next) => {

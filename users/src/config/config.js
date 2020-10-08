@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
-  PORT: process.env.PORT || 4000,
+  PORT: process.env.PORT || 6000,
   JWT_SECRET: process.env.JWT_SECRET || 'secretToken',
   JWT_EXPIRATION: process.env.JWT_EXPIRATION || 1, // Horas
   JWT_REFRESH_EXPIRATION: process.env.JWT_REFRESH_EXPIRATION || 72, // Horas
