@@ -1,6 +1,5 @@
 import { PathRepository } from '../../data/repositories'
 import { Controller, Post, Get, Delete, Put } from '@decorators/express'
-import Authenticate from '../middlewares/Authenticate'
 
 @Controller('/path')
 class PathController {
@@ -38,8 +37,8 @@ class PathController {
   async update(req, res) {
     const id = req.params.id
     const data = req.body
-    const path = await this.repository.update(id, data)
-    return res.send(path)
+    const createdPath = await this.repository.update(id, data)
+    return res.send(createdPath)
   }
 }
 
